@@ -1,10 +1,11 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
-import Layout from "../components/layouts/layout";
-import Home from "../components/home";
-import Login from "../components/login";
+import DefaultLayout from "../components/layouts/defaultLayout";
+import Home from "../pages/home";
+import Login from "../pages/login";
 import { useAuth } from "../hooks/index";
-import SignUp from "../components/sign-up";
+import SignUp from "../pages/sign-up";
+import NotFoundPage from "../pages/not-found";
 
 const CustomRoute = () => {
   // loading
@@ -33,32 +34,32 @@ const CustomRoute = () => {
   }, [auth, navigate]);
 
   // Doctor routes
-  const DashboardRoutes = useRoutes([
+  const DefaultAdminRoutes = useRoutes([
     {
       path: "/",
-      element: <Layout />,
+      element: <DefaultLayout />,
       children: [
         {
-          path: "dashboard",
+          path: "default",
           element: <Home />,
         },
       ],
     },
-    { path: "*", element: <h1>Not Found</h1> },
+    { path: "*", element: <NotFoundPage /> },
   ]);
 
   // Default routes
   const DefaultRoutes = useRoutes([
     {
       path: "/",
-      element: <Layout />,
+      element: <DefaultLayout />,
       children: [
         { index: true, element: <Login /> },
         { path: "login", element: <Login /> },
         { path: "signup", element: <SignUp /> },
       ],
     },
-    { path: "*", element: isValidRoute ? <Login /> : <h1>Not Found</h1> },
+    { path: "*", element: isValidRoute ? <Login /> : <NotFoundPage /> },
   ]);
 
   if (loading) {
@@ -70,7 +71,7 @@ const CustomRoute = () => {
   }
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
-      {auth?.token && isValidRoute ? DashboardRoutes : DefaultRoutes}
+      {auth?.token && isValidRoute ? DefaultAdminRoutes : DefaultRoutes}
     </Suspense>
   );
 };

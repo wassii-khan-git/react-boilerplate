@@ -114,7 +114,7 @@ const Navbar = () => {
                 {item.icon && (
                   <span className="anticon dark:text-white">{item.icon}</span>
                 )}
-                <span className="dark:text-white">{item.name}</span>
+                <span className="dark:text-whit">{item.name}</span>
               </NavLink>
             ))}
           </div>

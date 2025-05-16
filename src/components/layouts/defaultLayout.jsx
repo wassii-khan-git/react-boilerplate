@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../common/navbar";
 
-const Layout = () => {
+const DefaultLayout = () => {
   return (
     <>
       <Navbar />
@@ -13,4 +13,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default DefaultLayout;

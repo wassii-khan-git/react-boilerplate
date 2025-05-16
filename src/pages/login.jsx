@@ -9,8 +9,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../hooks/index"; // Assuming correct path
 import { notify } from "../utils/helper"; // Assuming correct path
 
-const ACCENT_COLOR = "emerald";
-
 const Login = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -38,8 +36,6 @@ const Login = () => {
       notify(errorMessage, false);
     },
   });
-
-  console.log("accent color:", ACCENT_COLOR);
 
   return (
     <div className="min-h-screen dark:bg-slate-900 flex flex-col justify-center items-center p-4">
@@ -74,7 +70,11 @@ const Login = () => {
             handleChange,
             handleSubmit,
           }) => (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6"
+              autoComplete="on"
+            >
               {/* Email input */}
               <div>
                 <label
@@ -84,7 +84,6 @@ const Login = () => {
                   Email Address
                 </label>
                 <input
-                  autoComplete="true"
                   type="email" // Use type="email" for better semantics and mobile keyboards
                   name="email"
                   id="email"
@@ -94,6 +93,7 @@ const Login = () => {
                       ? "border-red-500"
                       : "border-slate-300 dark:border-slate-600"
                   } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-slate-400 dark:placeholder-slate-500 text-slate-700 dark:text-slate-200`}
+                  autoComplete="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -125,7 +125,6 @@ const Login = () => {
                   </Link>
                 </div>
                 <input
-                  autoComplete="true"
                   type="password"
                   name="password"
                   id="password"
@@ -135,6 +134,7 @@ const Login = () => {
                       ? "border-red-500"
                       : "border-slate-300 dark:border-slate-600"
                   } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-slate-400 dark:placeholder-slate-500 text-slate-700 dark:text-slate-200`}
+                  autoComplete="password"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}

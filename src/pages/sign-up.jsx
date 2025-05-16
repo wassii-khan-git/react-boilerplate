@@ -140,6 +140,7 @@ const SignUp = () => {
                       ? "border-red-500"
                       : "border-slate-300 dark:border-slate-600"
                   } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-slate-400 dark:placeholder-slate-500 text-slate-700 dark:text-slate-200`}
+                  autoComplete="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -169,6 +170,7 @@ const SignUp = () => {
                       ? "border-red-500"
                       : "border-slate-300 dark:border-slate-600"
                   } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-slate-400 dark:placeholder-slate-500 text-slate-700 dark:text-slate-200`}
+                  autoComplete="password"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
