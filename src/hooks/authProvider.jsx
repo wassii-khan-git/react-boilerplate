@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "./context";
 
-export const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   // global state
   const [user, setUser] = useState({
     user: {},
@@ -51,3 +51,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+export default AuthProvider;
