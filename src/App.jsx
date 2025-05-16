@@ -1,4 +1,3 @@
-import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CustomRoute from "./routes";
 import { useEffect } from "react";
